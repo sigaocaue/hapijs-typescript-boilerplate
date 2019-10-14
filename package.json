@@ -1,8 +1,12 @@
 {
   "name": "hapijs-typescript-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Starter for building APIs with Hapi + Typescript",
   "main": "src/main.ts",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "dev": "npm run nodemon:build | node --inspect=5645 dist/src/main.js",
     "nodemon:build": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
@@ -10,7 +14,7 @@
   },
   "keywords": [],
   "author": "Caue Prado <caue.prado0@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hapi/boom": "^8.0.1",
     "@hapi/hapi": "^18.4.0",
