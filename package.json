@@ -1,0 +1,33 @@
+{
+  "name": "hapijs-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run nodemon:build | node --inspect=5645 dist/src/main.js",
+    "nodemon:build": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Caue Prado <caue.prado0@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^8.0.1",
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/inert": "^5.2.2",
+    "@hapi/joi": "^16.1.7",
+    "@hapi/vision": "^5.5.4",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/code": "^4.0.5",
+    "@types/hapi": "^18.0.2",
+    "@types/hapi__boom": "^7.4.1",
+    "@types/hapi__hapi": "^18.2.5",
+    "@types/hapi__inert": "^5.2.0",
+    "@types/hapi__joi": "^16.0.1",
+    "@types/hapi__vision": "^5.5.1",
+    "@types/node": "^12.7.12",
+    "@types/winston": "^2.4.4"
+  }
+}

@@ -1,0 +1,33 @@
+version: "3"
+
+# Named volumes
+volumes:
+  # Mongodb Data
+  boilerplate-hapijs-mongo:
+    driver: local
+
+services:
+  api:
+    image: ambientum/node:lts
+    container_name: boilerplate-hapijs-node
+    command: npm run dev
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "3000:3000"
+      - "5645:5645"
+    links:
+      - mongodb
+
+  mongodb:
+    container_name: boilerplate-hapijs-mongo
+    restart: on-failure
+    image: bitnami/mongodb:3.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - boilerplate-hapijs-mongo:/bitnami
+    environment:
+      - MONGODB_USERNAME=boilerplate-hapijs
+      - MONGODB_PASSWORD=boilerplate-hapijs@mongo
+      - MONGODB_DATABASE=boilerplate-hapijs
