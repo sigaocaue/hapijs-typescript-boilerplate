@@ -2,7 +2,7 @@
   "name": "hapijs-typescript-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.ts",
   "scripts": {
     "dev": "npm run nodemon:build | node --inspect=5645 dist/src/main.js",
     "nodemon:build": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
