@@ -1,5 +1,5 @@
 import * as Hapi from '@hapi/hapi'
-import Logger from '../helper/logger'
+import Logger from 'helper/logger'
 
 export default class Plugins {
   public static async registerAll(server: Hapi.Server): Promise<Error | void> {
@@ -15,8 +15,7 @@ export default class Plugins {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
-      const plugin = await import('blipp')
-      await Plugins.register(server, plugin)
+      await Plugins.register(server, await import('blipp'))
     } catch (error) {
       Logger.error(
         JSON.stringify({
@@ -63,8 +62,8 @@ export default class Plugins {
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       const plugin = await import('hapi-swagger')
-      const vision = await import('vision')
-      const inert = await import('inert')
+      const vision = await import('@hapi/vision')
+      const inert = await import('@hapi/inert')
 
       await Plugins.register(server, [
         inert,
