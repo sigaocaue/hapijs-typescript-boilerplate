@@ -24,12 +24,14 @@
     "@hapi/vision": "^5.5.4",
     "blipp": "^4.0.1",
     "dotenv": "^8.1.0",
+    "glob": "^7.1.4",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.2.1"
   },
   "devDependencies": {
     "@types/code": "^4.0.5",
     "@types/dotenv": "^6.1.1",
+    "@types/glob": "^7.1.1",
     "@types/hapi": "^18.0.2",
     "@types/hapi__boom": "^7.4.1",
     "@types/hapi__hapi": "^18.2.5",
