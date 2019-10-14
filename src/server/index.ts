@@ -1,14 +1,14 @@
 import * as Hapi from '@hapi/hapi'
-import Plugin from '../plugin'
-import Router from '../routes/router'
-import Logger from '../helper/logger'
+import Plugin from 'plugin'
+import Router from 'routes'
+import Logger from 'helper/logger'
 import Mongoose from 'mongoose'
-import DatabaseConfig from '../infra/database/config'
-import DatabaseDefault from '../infra/database/default'
+import DatabaseConfig from 'infra/database/config'
 
 export default class Server {
   private static _instance: Hapi.Server
-  public static initializeDb(): Promise<Mongoose.Mongoose> {
+
+  public static initializeMongoDb(): Promise<Mongoose.Mongoose> {
     Mongoose.Promise = global.Promise
     Mongoose.connection.on('error', error => {
       Logger.error({
@@ -46,9 +46,7 @@ export default class Server {
 
       await Plugin.registerAll(Server._instance)
       await Router.loadRoutes(Server._instance)
-      await this.initializeDb()
-      const dbDefault = new DatabaseDefault()
-      await dbDefault.run()
+      await this.initializeMongoDb()
 
       Logger.info(
         JSON.stringify({
@@ -69,19 +67,6 @@ export default class Server {
       )
       throw error
     }
-  }
-
-  public static stop(): Promise<Error | void> {
-    return Server._instance.stop()
-  }
-
-  public static async recycle(): Promise<Hapi.Server> {
-    await Server.stop()
-    return await Server.start()
-  }
-
-  public static instance(): Hapi.Server {
-    return Server._instance
   }
 
   public static serverPort(): number {
