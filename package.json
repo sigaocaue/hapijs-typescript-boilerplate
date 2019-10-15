@@ -8,9 +8,7 @@
     "url": ""
   },
   "scripts": {
-    "dev": "npm run nodemon:build | node --inspect=5645 dist/main.js",
-    "nodemon:build": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "./node_modules/.bin/tsc --watch | ./node_modules/.bin/nodemon --inspect=5645 ./dist/main.js --watch dist"
   },
   "keywords": [],
   "author": "Caue Prado <caue.prado0@gmail.com>",
