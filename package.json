@@ -8,8 +8,8 @@
     "url": ""
   },
   "scripts": {
-    "dev": "npm run nodemon:build | node --inspect=5645 dist/src/main.js",
-    "nodemon:build": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
+    "dev": "npm run nodemon:build | node --inspect=5645 dist/main.js",
+    "nodemon:build": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node -- ./src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -50,6 +50,7 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^1.19.3",
     "prettier": "^1.18.2",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
