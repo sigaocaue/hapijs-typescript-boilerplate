@@ -1,5 +1,5 @@
 import * as Hapi from '@hapi/hapi'
-import Logger from 'helper/logger'
+import Logger from '../helper/logger'
 
 export default class Plugins {
   public static async registerAll(server: Hapi.Server): Promise<Error | void> {

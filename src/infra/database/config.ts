@@ -1,12 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import PackageJson from '../../../package.json'
-
 export default class Config {
   public static url(): string {
     const host = process.env.MONGODB_HOST || 'mongodb'
     const port = process.env.MONGODB_PORT || 27017
-    const database = process.env.MONGODB_DATABASE || PackageJson.name
+    const database = process.env.MONGODB_DATABASE || 'app'
     return process.env.MONGODB_URL
       ? process.env.MONGODB_URL
       : `mongodb://${host}:${port}/${database}`
@@ -28,6 +24,7 @@ export default class Config {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
+      useUnifiedTopology: true,
     }
   }
 }

@@ -1,7 +1,11 @@
 import * as Hapi from '@hapi/hapi'
 import * as path from 'path'
 import * as Glob from 'glob'
-import Logger from 'helper/logger'
+import Logger from '../helper/logger'
+
+export interface Route {
+  register(server: Hapi.Server): Promise<any>
+}
 
 export default class Router {
   public static async loadRoutes(server: Hapi.Server): Promise<void> {

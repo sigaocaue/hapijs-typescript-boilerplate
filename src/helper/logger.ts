@@ -1,9 +1,6 @@
 import * as Winston from 'winston'
 import RotateFile from 'winston-daily-rotate-file'
 import * as DotEnv from 'dotenv'
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import Package from '../../package.json'
 
 export class ApiLogger {
   public static newInstance = (): Winston.Logger => {
@@ -31,9 +28,7 @@ export class ApiLogger {
       format: logFormat,
       transports: [
         new RotateFile({
-          filename: `./logs/${process.env.APP_NAME ||
-            Package.name ||
-            'app'}.log`,
+          filename: `./logs/${process.env.APP_NAME || 'app'}.log`,
           datePattern: 'YYYY-MM-DD',
         }),
         new Winston.transports.Console({

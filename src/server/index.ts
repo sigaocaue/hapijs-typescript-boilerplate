@@ -1,9 +1,9 @@
 import * as Hapi from '@hapi/hapi'
-import Plugin from 'plugin'
-import Router from 'routes'
-import Logger from 'helper/logger'
+import Plugin from '../plugin'
+import Router from '../routes'
+import Logger from '../helper/logger'
 import Mongoose from 'mongoose'
-import DatabaseConfig from 'infra/database/config'
+import DatabaseConfig from '../infra/database/config'
 
 export default class Server {
   private static _instance: Hapi.Server
