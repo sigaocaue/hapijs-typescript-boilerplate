@@ -6,6 +6,10 @@ volumes:
   boilerplate-hapijs-mongo:
     driver: local
 
+  # Postgres Data
+  boilerplate-hapijs-postgres:
+    driver: local
+
 services:
   api:
     image: ambientum/node:lts
@@ -31,3 +35,16 @@ services:
       - MONGODB_USERNAME=boilerplate-hapijs
       - MONGODB_PASSWORD=boilerplate-hapijs@mongo
       - MONGODB_DATABASE=boilerplate-hapijs
+
+  postgres:
+    container_name: boilerplate-hapijs-postgres
+    restart: on-failure
+    image: postgres:alpine
+    ports:
+      - "15432:5432"
+    volumes:
+      - boilerplate-hapijs-postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USERNAME=boilerplate-hapijs
+      - POSTGRES_PASSWORD=boilerplate-hapijs@postgres
+      - POSTGRES_DATABASE=boilerplate-hapijs
