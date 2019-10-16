@@ -1,5 +1,7 @@
 .env
-
+./dist
+dist
+dist/**/*.*
 # Created by .ignore support plugin (hsz.mobi)
 ### VisualStudioCode template
 .vscode/*
