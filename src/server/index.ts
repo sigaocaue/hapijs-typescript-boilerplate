@@ -2,29 +2,10 @@ import * as Hapi from '@hapi/hapi'
 import Plugin from '../plugin'
 import Router from '../routes'
 import Logger from '../helper/logger'
-import Mongoose from 'mongoose'
-import DatabaseConfig from '../infra/database/config'
+import Db from '../infra/database'
 
 export default class Server {
   private static _instance: Hapi.Server
-
-  public static initializeMongoDb(): Promise<Mongoose.Mongoose> {
-    Mongoose.Promise = global.Promise
-    Mongoose.connection.on('error', error => {
-      Logger.error({
-        user: 'system',
-        message: `Mongo Database has not connected, because was error. The error is ${error}`,
-      })
-    })
-
-    Mongoose.connection.once('open', () => {
-      Logger.info({
-        user: 'system',
-        message: `Mongo Database connected.`,
-      })
-    })
-    return Mongoose.connect(DatabaseConfig.url(), DatabaseConfig.options())
-  }
 
   public static async start(): Promise<Hapi.Server> {
     try {
@@ -45,8 +26,8 @@ export default class Server {
       })
 
       await Plugin.registerAll(Server._instance)
+      await Db.createConnections()
       await Router.loadRoutes(Server._instance)
-      await this.initializeMongoDb()
 
       Logger.info(
         JSON.stringify({

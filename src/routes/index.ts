@@ -9,7 +9,7 @@ export interface Route {
 
 export default class Router {
   public static async loadRoutes(server: Hapi.Server): Promise<void> {
-    const files = Glob.sync(path.join(__dirname, '../**/router/index.js'))
+    const files = Glob.sync(path.join(process.cwd(), 'dist/api/**/router/*.js'))
 
     Logger.info({
       user: 'system',
