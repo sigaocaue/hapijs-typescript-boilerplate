@@ -24,11 +24,12 @@ services:
       - mongodb
 
   build:
-    image: ambientum/node:lts
+    image: node:alpine
     container_name: boilerplate-hapijs-build
     command: npm run build-watch
+    working_dir: /home/node/app
     volumes:
-      - .:/var/www/app
+      - .:/home/node/app
 
   mongodb:
     container_name: boilerplate-hapijs-mongo
