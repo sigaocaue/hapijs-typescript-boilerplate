@@ -20,16 +20,15 @@ services:
     ports:
       - "3000:3000"
       - "5645:5645"
-    links:
-      - mongodb
+    depends_on:
+      - build
 
   build:
-    image: node:alpine
+    image: ambientum/node:lts
     container_name: boilerplate-hapijs-build
     command: npm run build-watch
-    working_dir: /home/node/app
     volumes:
-      - .:/home/node/app
+      - .:/var/www/app
 
   mongodb:
     container_name: boilerplate-hapijs-mongo
