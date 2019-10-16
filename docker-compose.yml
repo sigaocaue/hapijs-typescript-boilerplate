@@ -23,6 +23,13 @@ services:
     links:
       - mongodb
 
+  build:
+    image: ambientum/node:lts
+    container_name: boilerplate-hapijs-build
+    command: npm run build-watch
+    volumes:
+      - .:/var/www/app
+
   mongodb:
     container_name: boilerplate-hapijs-mongo
     restart: on-failure
@@ -32,19 +39,19 @@ services:
     volumes:
       - boilerplate-hapijs-mongo:/bitnami
     environment:
-      - MONGODB_USERNAME=boilerplate-hapijs
-      - MONGODB_PASSWORD=boilerplate-hapijs@mongo
-      - MONGODB_DATABASE=boilerplate-hapijs
+      - MONGODB_USERNAME=app
+      - MONGODB_PASSWORD=app@mongo
+      - MONGODB_DATABASE=app
 
   postgres:
     container_name: boilerplate-hapijs-postgres
     restart: on-failure
-    image: postgres:alpine
+    image: postgres:11-alpine
     ports:
       - "15432:5432"
     volumes:
-      - boilerplate-hapijs-postgres:/var/lib/postgresql/data
+      - boilerplate-hapijs-postgres
     environment:
-      - POSTGRES_USERNAME=boilerplate-hapijs
-      - POSTGRES_PASSWORD=boilerplate-hapijs@postgres
-      - POSTGRES_DATABASE=boilerplate-hapijs
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app@postgres
+      - POSTGRES_DB=app
