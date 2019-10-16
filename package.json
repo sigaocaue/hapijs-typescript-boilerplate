@@ -8,7 +8,9 @@
     "url": ""
   },
   "scripts": {
-    "dev": "./node_modules/.bin/tsc --watch | ./node_modules/.bin/nodemon --inspect=5645 ./dist/main.js --watch dist"
+    "dev": "./node_modules/.bin/nodemon --inspect=5645 ./dist/main.js --watch dist",
+    "build-watch": "npm run build | ./node_modules/.bin/tsc --watch",
+    "build": "./node_modules/.bin/tsc"
   },
   "keywords": [],
   "author": "Caue Prado <caue.prado0@gmail.com>",
@@ -23,7 +25,10 @@
     "blipp": "^4.0.1",
     "dotenv": "^8.1.0",
     "glob": "^7.1.4",
-    "mongoose": "^5.7.5",
+    "mongodb": "^3.3.3",
+    "pg": "^7.12.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.19",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.2.1"
   },
