@@ -9,19 +9,18 @@ export interface Route {
 
 export default class Router {
   public static async loadRoutes(server: Hapi.Server): Promise<void> {
-    const files = Glob.sync(path.join(__dirname, '../**/routes.js'))
+    const files = Glob.sync(path.join(__dirname, '../**/router/index.js'))
+
     Logger.info({
       user: 'system',
       message: 'Router - Start adding routes',
     })
 
-    const envoriment = process.env.NODE_ENV || 'local'
-
     for (const file of files) {
       try {
         Logger.info({
           user: 'system',
-          message: `Router: Registering the file: ${file} on ${envoriment} envoriment`,
+          message: `Router: Registering the file: ${file}.`,
         })
         const route = await import(file)
         await new route.default().register(server)

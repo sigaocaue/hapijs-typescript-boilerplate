@@ -1,8 +1,8 @@
 import * as Hapi from '@hapi/hapi'
-import { Route } from '../../routes'
-import HelthCheckController from './controller'
+import { Route } from '../../../routes'
+import HelthCheckController from '../controller'
 
-export default class HealthCheckRoutes implements Route {
+export default class Router implements Route {
   public async register(server: Hapi.Server): Promise<any> {
     const controller = new HelthCheckController()
     return new Promise(resolve => {
